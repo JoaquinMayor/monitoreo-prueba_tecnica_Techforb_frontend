@@ -14,7 +14,7 @@ import { API_URL } from "./constantes";
     providedIn: 'root'
 })
 
-export class plantaService{
+export class PlantaService{
     datos:any[] = [];
     lecturas:any[] = [];
    plantas:Planta[] = [];
@@ -41,6 +41,7 @@ export class plantaService{
                },error(err){
                 console.log(err);
         }})
+        return this.plantas;
     }
 
     actualizarLecturas(id:number, cantLectura:number, cantLecturaOk:number, cantLecturaMedia:number, cantLecturaRojo:number){
@@ -60,15 +61,15 @@ export class plantaService{
     }
 
     cantidadOk(id:number){
-        return this.http.get(`${API_URL}/api/planta/contarOk/${id}`, this.usuarioService.httpOptions);
+        return this.http.get<any>(`${API_URL}/api/planta/contarOk/${id}`, this.usuarioService.httpOptions);
     }
 
     cantidadMedia(id:number){
-        return this.http.get(`${API_URL}/api/planta/contarMedia/${id}`, this.usuarioService.httpOptions);
+        return this.http.get<any>(`${API_URL}/api/planta/contarMedia/${id}`, this.usuarioService.httpOptions);
     }
 
     cantidadRoja(id:number){
-        return this.http.get(`${API_URL}/api/planta/contarRoja/${id}`, this.usuarioService.httpOptions);
+        return this.http.get<any>(`${API_URL}/api/planta/contarRoja/${id}`, this.usuarioService.httpOptions);
     }
 }
 

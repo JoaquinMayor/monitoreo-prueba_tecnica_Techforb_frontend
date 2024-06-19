@@ -1,7 +1,7 @@
 <section class="contenedor">
     <section class="titulo">
         <h4>Plantas</h4>
-        <button>+ Crear nueva planta</button>
+        <button class="crear">+ Crear nueva planta</button>
     </section>
     <hr>
     <section class="tabla">
@@ -15,6 +15,49 @@
                     <th>Alertas rojas</th>
                     <th>Acciones</th>
                 </tr>
+                    <tr>
+                        <td><div class="pais"><img src="https://flagcdn.com/w320/ar.png" alt="bandera" class="bandera"><p class="pais texto">Argentina</p></div></td>
+                        <td><p class="nombre texto">Pepsi</p></td>
+                        <td><p class="ok texto">200</p></td>
+                        <td><p class="medio texto">200</p></td>
+                        <td><p class="rojo texto">200</p></td>
+                        <td class="puntitos"><img src="../../assets/iconos/puntos.png" alt="opciones" class="puntos"></td>
+                    </tr>
+                    <tr>
+                        <td><div class="pais texto"><img src="https://flagcdn.com/w320/ar.png" alt="bandera" class="bandera"><p>Brazil</p></div></td>
+                        <td><p class="nombre texto">Pepsi</p></td>
+                        <td><p class="ok texto">200</p></td>
+                        <td><p class="medio texto">200</p></td>
+                        <td><p class="rojo texto">200</p></td>
+                        <td class="puntitos"><img src="../../assets/iconos/puntos.png" alt="opciones" class="puntos"></td>
+                    </tr>
+                    <tr>
+                        <td><div class="pais texto"><img src="https://flagcdn.com/w320/ar.png" alt="bandera" class="bandera"><p>Venezuela</p></div></td>
+                        <td><p class="nombre texto">Pepsi</p></td>
+                        <td><p class="ok texto">200</p></td>
+                        <td><p class="medio texto">200</p></td>
+                        <td><p class="rojo texto">200</p></td>
+                        <td class="puntitos"><img src="../../assets/iconos/puntos.png" alt="opciones" class="puntos"></td>
+                    </tr>
+                    <tr>
+                        <td><div class="pais texto"><img src="https://flagcdn.com/w320/ar.png" alt="bandera" class="bandera"><p>España</p></div></td>
+                        <td><p class="nombre texto">Pepsi</p></td>
+                        <td><p class="ok texto" >200</p></td>
+                        <td><p class="medio texto">200</p></td>
+                        <td><p class="rojo texto">200</p></td>
+                        <td class="puntitos"><img src="../../assets/iconos/puntos.png" alt="opciones" class="puntos"></td>
+                    </tr>
+                    @for(planta of plantas; track planta.getId; let index = $index){
+                        <tr>
+                            <td><img src="planta.getBandera" alt="bandera"><p>{{planta.getPais}}</p></td>
+                            <td><p>{{planta.getNombre}}</p></td>
+                            <td><p>{{planta.getLecturas.length}}</p></td>
+                            <td><p>{{lecturasMedias[index]}}</p></td>
+                            <td><p>{{lecturasRojas[index]}}</p></td>
+                            <td><img src="../../assets/iconos/puntos.png" alt="opciones"></td>
+                        </tr>
+                    }
+               
             </thead>
         </table>
     </section>

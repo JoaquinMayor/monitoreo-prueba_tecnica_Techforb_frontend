@@ -1,0 +1,169 @@
+.contenedor{
+    width: 1262px;
+height: 350px;
+top: 245px;
+left: 110px;
+gap: 0px;
+border-radius: 15px 0px 0px 0px;
+opacity: 0px;
+
+.titulo{
+    display: flex;
+    margin-top: 3vh;
+
+    h4{
+        width: 62px;
+        height: 24px;
+        top: 275px;
+        left: 140px;
+        gap: 0px;
+        opacity: 0px;
+        margin-left: 4vh;
+        margin-right: 3vh;
+        margin-bottom: 2vh;
+       
+
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        text-align: left;
+
+        color: #000000;
+
+        
+    }
+    .crear{
+        width: 170px;
+        height: 28px;
+        top: 273px;
+        left: 227px;
+        gap: 0px;
+        border-radius: 5px 5px 5px 5px;
+        border: 1px 0px 0px 0px;
+        opacity: 0px;
+
+        color: #000000;
+
+        border: 1px solid #B0CAD1;
+        cursor:pointer;
+    }
+}
+
+hr{
+    width: 1222px;
+    height: 0px;
+    top: 314px;
+    left: 130px;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    margin-bottom: 2vh;
+    
+    border: 1px solid #F3F6F7
+}
+
+.tabla{
+    margin-left: 2vh;
+    th{
+        width: 25vh;
+        height: 21px;
+        gap: 0px;
+        opacity: 0px;
+        padding-bottom: 1vh;
+        
+
+        
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        text-align: left;
+        color: #B0CAD1;
+
+    }
+    td{
+        padding-bottom: 2vh;
+    }
+    .puntitos{
+        width: 8vh;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .pais{
+        display: flex;
+        align-items: center;
+        .nombre{
+            width: 50px;
+            height: 18px;
+            top: 368px;
+            left: 299px;
+            gap: 0px;
+            opacity: 0px;
+
+            
+        }
+        .bandera{
+            width: 18px;
+            height: 12.38px;
+            top: 371px;
+            left: 130px;
+            gap: 0px;
+            opacity: 0px;
+            margin-right: 1vh;
+            
+        }
+        .ok{
+            width: 23px;
+            height: 18px;
+            top: 368px;
+            left: 585px;
+            gap: 0px;
+            opacity: 0px;
+            
+        }
+        .texto{
+            
+            font-family: Poppins;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 18px;
+            text-align: center;
+        }
+        .medio{
+            width: 14px;
+            height: 18px;
+            top: 368px;
+            left: 785px;
+            gap: 0px;
+            opacity: 0px;
+            
+        }
+
+        .rojo{
+            width: 8px;
+            height: 18px;
+            top: 368px;
+            left: 1032px;
+            gap: 0px;
+            opacity: 0px;
+            
+        }
+
+        .puntos{
+            width: 12.05px;
+            height: 2.7px;
+            top: 370.53px;
+            left: 1294.7px;
+            gap: 0px;
+            opacity: 0px;
+           
+            
+        }
+    }
+    
+}
+
+
+}
