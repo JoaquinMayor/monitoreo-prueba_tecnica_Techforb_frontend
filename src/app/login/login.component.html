@@ -1,1 +1,76 @@
-<p>login works!</p>
+
+    <section class="contenedor">
+        <section class="inicio">
+            <section class="fondo"></section>
+       
+            <h1 class="titulo">Iniciar sesión</h1>
+            <p class="descripcion">Nos alegra tenerte de vuelta y estamos listos para atender tus necesidades. 
+                Inicia sesión y continúa aprovechando al máximo nuestra plataforma</p>
+            <div class="elemento"> 
+                <img src= '../../assets/iconos/Shape.png' class="icon">
+                <div>
+                    <p class="subTitulo">Monitoreo Integral</p>
+                    <p class="texto">Administra, Monitorea multiples plantas de forma centralizada</p>
+                </div>
+                
+            </div>
+           
+            
+            <div class="elemento">
+                <img src= '../../assets/iconos/Icon.png' class="icon">
+                <div>
+                    <p class="subTitulo">Notificaciones en tiempo real</p>
+                    <p class="texto">Recibi notificaciones en tiempo real sobre la mediciones</p>
+                </div>
+                
+            </div>
+            
+            
+            
+                
+        </section>
+        
+        <section class="logueo">
+            <div class="titulos">
+                <h2>Portal de monitoreo</h2>
+                <h3>Iniciar sesión</h3>
+            </div>
+          
+        
+            <form [formGroup]="logueo">
+                <div class="input-contenedor">
+                <label for="email">Email</label>
+                <input type="email" class="email" id="email" name="email" placeholder="Ingresa tu correo electronico" formControlName = "email">
+                @if(logueo.get("email")?.errors?.["required"] && logueo.get("email")?.dirty){
+                    <small>El email es requerido</small>
+                }@else if(logueo.get("email")?.errors?.["email"]){
+                    <small>Tiene que ser un email válido</small>
+                }
+                
+               
+                
+                <section class="contrasenia">
+                    <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Ingresa tu contraseña">
+                    <button class="botonOjo" (click)="hidePassword = !hidePassword">
+                      <img  [src]="hidePassword ? '../../assets/iconos/eye.svg' : '../../assets/iconos/eye-off.svg'"
+                        alt="Mostrar/Ocultar Contraseña">
+                    </button>
+                </section>  
+                @if(logueo.get("password")?.errors?.["required"] && logueo.get("password")?.dirty){
+                    <small>La contraseña es requerida</small>
+                }
+                    <p>{{mensaje}}</p>
+            </div>
+            <div class="botones">
+                <a class="olvido">¿Olvidaste tu contraseña?</a>
+                <input type="submit" class="submit" id="submit" value="Iniciar sesión" [disabled]="logueo.invalid" (click)="login()">
+            </div>
+                
+            </form>
+        
+            <p class="proteccion">Protegido por reCAPTCHA y sujeto a la <a class="politicas">Politica de Privacidad</a> y<a class="politicas"> Condiciones</a></p>
+        </section>
+    </section>
+
+
+

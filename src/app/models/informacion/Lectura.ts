@@ -1,5 +1,6 @@
+import { Alerta } from "./Alerta";
 import { TipoLectura } from "./TipoLectura";
-import { Alerta } from "./alerta";
+
 
 export class Lectura{
 

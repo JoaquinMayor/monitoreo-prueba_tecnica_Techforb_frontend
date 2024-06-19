@@ -1,14 +1,12 @@
 export class Usuario{
 
-    private id:number;
     private nombre:string;
     private apellido:string;
     private email:string;
     private contrasenia:string;
     private enabled:boolean;
 
-    constructor(id:number, nombre:string, apellido:string, email:string, contrasenia:string, enabled:boolean){
-        this.id = id;
+    constructor( nombre:string, apellido:string, email:string, contrasenia:string, enabled:boolean){
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -16,9 +14,6 @@ export class Usuario{
         this.enabled = enabled;
     }
 
-    get getId(){
-        return this.id;
-    }
 
     get getNombre(){
         return this.nombre;
