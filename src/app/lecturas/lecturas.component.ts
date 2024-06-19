@@ -9,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class LecturasComponent {
 
+  tilde:string = "../../assets/iconos/tildePequeña.png"
+  exclamacion:string = "../../assets/iconos/exclamacionPequeña.png"
+  alerta:string="../../assets/iconos/alertaPequeña.png"
+
 }

@@ -1,0 +1,105 @@
+.contenedor{
+    width: 1262px;
+    height: 200px;
+    top: 615px;
+    left: 110px;
+    gap: 0px;
+    opacity: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vh;
+    margin-top: 3vh;
+    justify-content: space-between;
+    font-family: Poppins;
+   
+
+    .fila{
+        display: flex;
+        
+        .tarjeta{
+            background-color: white;
+            display: flex;
+            width: 50vh;
+            height: 90px;
+            top: 615px;
+            left: 110px;
+            gap: 0px;
+            border-radius: 15px 15px 15px 15px;
+            opacity: 0px;
+            margin-left: 2vh;
+            margin-left: 5vh;
+            justify-content: space-around;
+
+            .icono{
+                margin-top: 2vh;
+                width: 60px;
+                height: 60px;
+                top: 630px;
+                left: 1281px;
+                gap: 0px;
+                opacity: 0px;
+                
+            }
+            
+            .informacion{
+                display:flex;
+                flex-direction: column;
+                margin-top: 2.5vh;
+
+                .valores{
+                    margin-top: 0.3vh;
+                    display: flex;
+                    .valor{
+                        
+                        margin-left: 2vh;
+                    }
+                    .cantidad{
+                        width: 15px;
+                        height: 18px;
+                        top: 662px;
+                        left: 208px;
+                        gap: 0px;
+                        opacity: 0px;
+                    
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 18px;
+                        text-align: left;
+                    }
+                }
+               
+                .tipo{
+                    margin-left: 2vh;
+                    width: 15vh;
+                    height: 18px;
+                    top: 641px;
+                    left: 129px;
+                    gap: 0px;
+                    opacity: 0px;
+
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 18px;
+                    text-align: left;
+                       
+                    color: #8E8EA1;
+                }
+
+                .valor{
+                    display: flex;
+
+                    .estado{
+                        width: 14px;
+                        height: 14px;
+                        top: 775px;
+                        left: 243px;
+                        gap: 0px;
+                        opacity: 0px;
+                           
+                    }
+                    
+                }
+            }
+        }
+    }
+}
