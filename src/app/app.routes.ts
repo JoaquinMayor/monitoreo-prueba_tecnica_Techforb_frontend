@@ -2,10 +2,12 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { GlobalComponent } from './global/global.component';
+import { PlantasComponent } from './plantas/plantas.component';
 
 export const routes: Routes = [
     {
         path:"",
-        component: SidenavComponent,  
+        component: PlantasComponent,  
     }
 ];

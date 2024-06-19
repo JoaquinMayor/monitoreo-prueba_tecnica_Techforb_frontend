@@ -3,6 +3,7 @@ import { Usuario } from '../models/perfil/Usuario';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Rol } from '../models/perfil/Rol';
+import { API_URL } from './constantes';
 
 
 @Injectable({
@@ -11,9 +12,9 @@ import { Rol } from '../models/perfil/Rol';
 export class UsuarioService{
   
     usuario:Usuario = new Usuario("","","","",false);
-    token = "";
-    private apiUrl = "http://localhost:8080";
-    httpClient = inject(HttpClient);
+    private token = "";
+    
+    private httpClient = inject(HttpClient);
     private headers = new HttpHeaders({"Content-Type": "application/json"});
     httpOptions = {
         headers: new HttpHeaders({
@@ -23,7 +24,7 @@ export class UsuarioService{
     }
     
     buscarUsuario(email:string):Observable<any>{
-        return this.httpClient.get(`${this.apiUrl}/api/usuario/email/${email}`,this.httpOptions);
+        return this.httpClient.get(`${API_URL}/api/usuario/email/${email}`,this.httpOptions);
     }
 
     guardarUsuario(email:string){
@@ -49,7 +50,7 @@ export class UsuarioService{
             email:email,
             contrasenia:contrasenia
         };
-        return this.httpClient.post(`${this.apiUrl}/login`, loginData,{headers:this.headers});
+        return this.httpClient.post(`${API_URL}/login`, loginData,{headers:this.headers});
     }
 
     guardarToken(token:string){
