@@ -1,0 +1,80 @@
+.sidenav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    width: 5%;
+    
+    left: 80px;
+    gap: 0px;
+    background: #FFFFFF;
+
+
+    .logo{
+        width: 36px;
+        height: 32.61px;
+        top: 24px;
+        left: 22px;
+        gap: 0px;
+        opacity: 0px;
+        margin-bottom: 8vh;
+        margin-top: 3vh;
+
+    }
+    .opciones{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        ul{
+            list-style-type: none;
+            li{
+                margin-bottom: 3.5vh;
+            }
+        }
+       
+        
+        .planeta{
+            width: 20px;
+            height: 20px;
+            top: 130px;
+            left: 30px;
+            gap: 0px;
+            opacity: 0px;
+        }
+        .camara{
+            width: 24px;
+            height: 15px;
+            top: 192px;
+            left: 28px;
+            gap: 0px;
+            opacity: 0px;
+            
+        }
+        .sensor{
+            width: 22px;
+            height: 16.97px;
+            top: 249px;
+            left: 29px;
+            gap: 0px;
+            opacity: 0px;
+        }
+        .planta{
+            width: 20px;
+            height: 20px;
+            top: 307.97px;
+            left: 30px;
+            gap: 0px;
+            opacity: 0px;
+        }
+        .log{
+            width: 20px;
+            height: 20px;
+            top: 307.97px;
+            left: 30px;
+            gap: 0px;
+            opacity: 0px;
+        }
+    }
+    
+}
