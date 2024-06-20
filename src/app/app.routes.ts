@@ -7,11 +7,12 @@ import { PlantasComponent } from './plantas/plantas.component';
 import { LecturasComponent } from './lecturas/lecturas.component';
 import { CrearPlantaComponent } from './crear-planta/crear-planta.component';
 import { EditarPlantaComponent } from './editar-planta/editar-planta.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
         path:"",
-        component: CrearPlantaComponent,  
+        component: DashboardComponent,  
     },{
         path:"main",
         component:LoginComponent

@@ -12,7 +12,8 @@
 .titulo{
     display: flex;
     margin-top: 3vh;
-
+    padding-top: 0.8vh;
+    align-items: center;
     h4{
         width: 62px;
         height: 24px;
@@ -23,7 +24,7 @@
         margin-left: 4vh;
         margin-right: 3vh;
         margin-bottom: 2vh;
-       
+       padding-top: 1vh;
 
         font-family: Poppins;
         font-size: 16px;

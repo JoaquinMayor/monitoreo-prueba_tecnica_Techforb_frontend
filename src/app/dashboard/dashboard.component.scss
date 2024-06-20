@@ -1,0 +1,16 @@
+
+.contenedor{
+    display: flex;
+    background-color: #E9F1F4;
+    .sidenav{
+        z-index: 1000;
+    }
+    .informacion{
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        margin-top: 5vh;
+        margin-left: 3vh;
+        
+    }
+}

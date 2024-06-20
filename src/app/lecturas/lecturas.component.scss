@@ -7,7 +7,6 @@
     opacity: 0px;
     display: flex;
     flex-direction: column;
-    margin-left: 3vh;
     margin-top: 3vh;
     justify-content: space-between;
     font-family: Poppins;
@@ -26,8 +25,7 @@
             gap: 0px;
             border-radius: 15px 15px 15px 15px;
             opacity: 0px;
-            margin-left: 2vh;
-            margin-left: 5vh;
+            margin-right: 2vh;
             justify-content: space-around;
 
             .icono{
