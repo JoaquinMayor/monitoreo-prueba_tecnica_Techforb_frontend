@@ -23,7 +23,7 @@ export class LoginComponent {
   constructor(private usuarioService:UsuarioService, private router:Router){}
 
   async login(){
-    console.log("hola");
+    
     await this.usuarioService.login(this.logueo.get("email")?.value || "", this.logueo.get("password")?.value ||"")
     .subscribe({next:(response) => {
       this.usuarioService.guardarToken(response.token);
@@ -34,9 +34,9 @@ export class LoginComponent {
     }
   
     })
-    
+    this.router.navigate([""]);
   }
 
-  
+
 
 }

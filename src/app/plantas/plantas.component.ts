@@ -14,11 +14,11 @@ export class PlantasComponent implements OnInit{
   plantas:Planta[] = [];
   lecturasMedias:number[] = [];
   lecturasRojas:number[] = [];
-  
+  opcionesVisible:boolean[] = [false, false];
   constructor(private plantaService:PlantaService){}
   
   ngOnInit(): void {
-   this.plantas = this.plantaService.obtenerPlantas();
+   /*this.plantas = this.plantaService.obtenerPlantas();
    this.plantas.forEach(planta=>{
     let lecturaMedia:number;
     let lecturaRoja:number;
@@ -36,7 +36,12 @@ export class PlantasComponent implements OnInit{
       }
     })
     
-   })
+   })*/
+  }
+
+  mostrarOpcion(index:number){
+    this.opcionesVisible[index] = !this.opcionesVisible[index];
+
   }
   
 }

@@ -24,6 +24,7 @@ export class PaisService{
                 this.datos.forEach(dato=>{
                     this.paises.push(new Pais(dato.name.official, dato.flags.png));
                 })
+                
             }, error:(err)=>{
                 console.log(err);
             }

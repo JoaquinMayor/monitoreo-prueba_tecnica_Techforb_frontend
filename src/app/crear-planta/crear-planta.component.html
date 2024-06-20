@@ -1,0 +1,30 @@
+<div class="body">
+</div>
+
+<section class="contenedor">
+    <h3>Crear nueva planta</h3>
+    <form [formGroup]="creacion">
+        <div class="formulario">
+            <div class="seccion">
+        
+            <label for="nombre">Nombre planta</label>
+            <input type="text" placeholder="Ingrese nombre" class="nombre" id="nombre" name="nombre" formControlName="nombre">
+        @if(creacion.get("nombre")?.errors?.["required"]  &&  creacion.get("nombre")?.dirty){
+            <p>El nombre es requerido</p>
+        }
+            </div>
+            <div class="seccion">
+        <label for="pais">País</label>
+        <select class="pais" id="pais" name="pais" formControlName="pais">
+            @for(pais of paises;track pais; let index = $index){
+                <option [value]="pais.getNombre">{{pais.getNombre}}</option>
+            }  
+        </select>
+            </div>
+        <div class="botones">
+            <button class="cancelar">Cancelar</button>
+            <input type="submit" value="Crear" (click)="crear()" class="crear">
+        </div>
+        </div>
+    </form>
+</section>

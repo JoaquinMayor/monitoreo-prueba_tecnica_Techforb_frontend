@@ -1,0 +1,68 @@
+<section class="body"></section>
+<section class="contenedor">
+    <h4>Editar planta</h4>
+    <form [formGroup]="edicion">
+        <div class="formulario">
+        <div class="informacion">
+        <div class="izquierda">
+            <div class="seccion">
+                <label for="nombre">Nombre planta</label>
+                <input type="text" class="nombre" name="nombre" id="nombre" placeholder="Nombre Planta" formControlName="nombre">
+                @if(edicion.get("nombre")?.errors?.["required"]  &&  edicion.get("nombre")?.dirty){
+                    <p>El nombre es requerido</p>
+                }
+            </div>
+
+            <div class="seccion">
+                <label for="lecturas">Cantidad de lecturas</label>
+                <input type="number" class="lecturas" name="lecturas" id="lecturas" placeholder="Ingrese" formControlName="cantidadLecturas">
+                @if(edicion.get("lecturas")?.errors?.["required"]  &&  edicion.get("lecturas")?.dirty){
+                    <p>La cantidad de lecturas es requerida</p>
+                }
+            </div>
+
+            <div class="seccion">
+                <label for="medias">Alertas medias</label>
+                <input type="number" class="medias" name="medias" id="medias" placeholder="Ingrese" formControlName="cantidadMedia">
+                @if(edicion.get("medias")?.errors?.["required"]  &&  edicion.get("medias")?.dirty){
+                    <p>La cantidad de lecturas medias es requerida</p>
+                }
+            </div>
+
+        </div>
+
+        <div class="derecha">
+            <div class="seccion">
+                <label for="pais">País</label>
+                <select class="pais" id="pais" name="pais" formControlName="pais">
+                    @for(pais of paises;track pais; let index = $index){
+                        <option [value]="pais.getNombre">{{pais.getNombre}}</option>
+                    }  
+                </select>
+            </div>
+
+            <div class="seccion">
+                <label for="ok">Lecturas ok</label>
+                <input type="number" class="ok" name="" id="ok" placeholder="Ingrese" formControlName="cantidadOk">
+                @if(edicion.get("ok")?.errors?.["required"]  &&  edicion.get("ok")?.dirty){
+                    <p>La cantidad de lecturas ok es requerida</p>
+                }
+            </div>
+
+            <div class="seccion">
+                <label for="roja">Alertas rojas</label>
+                <input type="number" class="roja" name="roja" id="roja" placeholder="Ingrese" formControlName="cantidadRoja">
+                @if(edicion.get("roja")?.errors?.["required"]  &&  edicion.get("roja")?.dirty){
+                    <p>La cantidad de alertas rojas son requerida</p>
+                }
+            </div>
+        </div>
+        </div>
+            <div class="botones">
+                <button class="cancelar">Cancelar</button>
+                <input type="submit" value="Crear" class="crear">
+            </div>
+        
+    </div>
+    </form>
+</section>

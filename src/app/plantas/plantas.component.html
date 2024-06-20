@@ -29,7 +29,17 @@
                         <td><p class="ok texto">200</p></td>
                         <td><p class="medio texto">200</p></td>
                         <td><p class="rojo texto">200</p></td>
-                        <td class="puntitos"><img src="../../assets/iconos/puntos.png" alt="opciones" class="puntos"></td>
+                        <td class="puntitos"><img src="../../assets/iconos/puntos.png" (click)="mostrarOpcion(1)" alt="opciones" class="puntos">
+                        @if(opcionesVisible[1]){
+                        <div class="menu">
+                            <ul>
+                                <li>Modificar</li>
+                                <li>Eliminar</li>
+                            </ul>
+                        </div>
+                            
+                        }
+                        </td>
                     </tr>
                     <tr>
                         <td><div class="pais texto"><img src="https://flagcdn.com/w320/ar.png" alt="bandera" class="bandera"><p>Venezuela</p></div></td>

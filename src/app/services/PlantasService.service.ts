@@ -44,6 +44,10 @@ export class PlantaService{
         return this.plantas;
     }
 
+    crearPlanta(planta:Planta){
+        this.http.post(`${API_URL}/api/planta`,planta,this.usuarioService.httpOptions).subscribe();
+    }
+
     actualizarLecturas(id:number, cantLectura:number, cantLecturaOk:number, cantLecturaMedia:number, cantLecturaRojo:number){
 
         const valores={

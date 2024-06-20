@@ -1,0 +1,143 @@
+
+.body{
+    width: 100%;
+    height: 900px;
+    gap: 0px;
+    opacity: 30%;
+    background: #000000;
+
+}
+
+.contenedor{
+        z-index: 1000;
+        width: 720px;
+        height: 360px;
+        top: 270px;
+        left: 360px;
+        gap: 0px;
+        font-family: Poppins;
+        border-radius: 15px;
+        opacity: 0px;
+        background: #FFFFFF;
+        font-family: Poppins;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 3vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background:red;
+        align-items: flex-start;
+        h4{
+            width: 91px;
+            height: 21px;
+            top: 290px;
+            left: 390px;
+            margin-bottom: 2vh;
+            
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+            text-align: left;
+            
+        }
+        .formulario{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .informacion{
+                display: flex;
+                margin-bottom: 2vh;
+                
+                    .izquierda{
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .derecha{
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .seccion{
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 1vh;
+                        margin-right: 3vh;
+                        label{
+                            width: 20vh;
+                            height: 21px;
+                            top: 331px;
+                            left: 730px;
+                            gap: 0px;
+                            opacity: 0px;
+                            
+                            font-size: 14px;
+                            font-weight: 500;
+                            line-height: 21px;
+                            text-align: left;
+                            color: #838B9E;
+                            margin-bottom: 0.3vh;
+                        }
+                        input{
+                            width: 320px;
+                            height: 42px;
+                            top: 357px;
+                            left: 390px;
+                            gap: 0px;
+                            border-radius: 7.43px;
+                            border: 0.93px 0px 0px 0px;
+                            opacity: 0px;
+                            border: 0.93px solid #C6C9D2
+                        }
+
+                        select{
+                            width: 320px;
+                            height: 42px;
+                            top: 357px;
+                            left: 390px;
+                            gap: 0px;
+                            border-radius: 7.43px;
+                            border: 0.93px;
+                            opacity: 0px;
+                            border: 0.93px solid #C6C9D2;
+                            
+                        }
+                        
+                        }
+                    }
+                    .botones{
+                        display: flex;
+                        margin-right: 3vh;
+                        .cancelar{
+                            width: 100px;
+                            height: 36px;
+                            top: 575px;
+                            left: 615px;
+                            gap: 0px;
+                            border-radius: 5px;
+                            opacity: 0px;
+                            color: #33A3AA;
+                            border: 1px solid #33A3AA;
+                            margin-right: 3vh;
+                        }
+                        .crear{
+                            width: 100px;
+                            height: 36px;
+                            top: 575px;
+                            left: 725px;
+                            gap: 0px;
+                            border-radius: 5px;
+                            opacity: 0px;
+                            
+                            
+                            font-size: 14px;
+                            font-weight: 500;
+                            line-height: 21px;
+                            text-align: center;
+                            background: #33A3AA;
+                            color: white;
+                        }
+            }
+        }
+}
