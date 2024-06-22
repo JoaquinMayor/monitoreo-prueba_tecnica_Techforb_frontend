@@ -68,7 +68,7 @@ export class PlantasComponent implements OnInit{
           this.datos.forEach((planta)=>{
             this.plantas.push(new Planta(planta.id, planta.nombre, planta.pais, planta.bandera));
           });
-
+          this.plantas.sort((a, b) => a.getPais.localeCompare(b.getPais));
           this.plantas.forEach(planta=>{
             let lecturaOk:number;
             let lecturaMedia:number;
@@ -95,7 +95,9 @@ export class PlantasComponent implements OnInit{
                 this.lecturasRojas.push(lecturaRoja);
               }
             })
+           
            })
+           
       },
       error:(err)=>{
           console.log(err);

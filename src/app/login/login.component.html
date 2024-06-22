@@ -50,13 +50,13 @@
                
                 
                 <section class="contrasenia">
-                    <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Ingresa tu contraseña">
+                    <input [type]="hidePassword ? 'password' : 'text'" formControlName="contrasenia" placeholder="Ingresa tu contraseña">
                     <button class="botonOjo" (click)="hidePassword = !hidePassword">
                       <img  [src]="hidePassword ? '../../assets/iconos/eye.svg' : '../../assets/iconos/eye-off.svg'"
                         alt="Mostrar/Ocultar Contraseña">
                     </button>
                 </section>  
-                @if(logueo.get("password")?.errors?.["required"] && logueo.get("password")?.dirty){
+                @if(logueo.get("contrasenia")?.errors?.["required"] && logueo.get("contrasenia")?.dirty){
                     <small>La contraseña es requerida</small>
                 }
                     <p>{{mensaje}}</p>

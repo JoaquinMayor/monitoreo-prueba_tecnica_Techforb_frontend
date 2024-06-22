@@ -12,7 +12,7 @@ import { API_URL } from './constantes';
 export class UsuarioService{
   
     usuario:Usuario = new Usuario("","","","",false);
-     token = "";
+    private token = "";
      
     private httpClient = inject(HttpClient);
     private headers = new HttpHeaders({"Content-Type": "application/json"});
@@ -21,6 +21,19 @@ export class UsuarioService{
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + this.token
           })
+    }
+
+    registrarse(usuario:Usuario){
+        return this.httpClient.post(`${API_URL}/api/usuario`,usuario,{headers:this.headers}).subscribe();
+    }
+
+    estaLogueado(){
+        return this.token != "";
+    }
+
+    existeUsuario(email:string){
+        console.log(email);
+        return this.httpClient.get<any>(`${API_URL}/api/usuario/existe/${email}`);
     }
     
     buscarUsuario(email:string):Observable<any>{

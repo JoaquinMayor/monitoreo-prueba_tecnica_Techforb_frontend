@@ -15,7 +15,7 @@ export class LoginComponent {
   
   logueo = new FormGroup({
     email: new FormControl("",[Validators.email, Validators.required]),
-    password:new FormControl("",[Validators.required])
+    contrasenia:new FormControl("",[Validators.required])
   });
   mensaje:string = "";
   hidePassword = true;
@@ -24,11 +24,11 @@ export class LoginComponent {
 
   async login(){
     localStorage.setItem("email",this.logueo.get("email")?.value || "")
-    await this.usuarioService.login(this.logueo.get("email")?.value || "", this.logueo.get("password")?.value ||"")
+    await this.usuarioService.login(this.logueo.get("email")?.value || "", this.logueo.get("contrasenia")?.value ||"")
     .subscribe({next:async (response) => {
       await this.usuarioService.guardarToken(response.token);
       await this.usuarioService.guardarUsuario(response.email);
-      this.router.navigate([""]);
+      this.router.navigate(["dashboard"]);
     },
     error:(err)=>{
         this.mensaje = "Email o contraseña incorrectos";

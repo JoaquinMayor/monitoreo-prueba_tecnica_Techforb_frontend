@@ -2,6 +2,7 @@
 .contenedor{
     display: flex;
     background-color: #E9F1F4;
+    overflow: hidden;
     .sidenav{
         z-index: 1000;
     }

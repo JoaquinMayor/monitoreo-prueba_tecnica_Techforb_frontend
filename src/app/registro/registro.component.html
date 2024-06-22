@@ -1,0 +1,54 @@
+<section class="contenedor">
+    <h1>Registro</h1>
+
+    <form [formGroup]="registro">
+        <div class="seccion">
+            <label for="nombre">Ingrese su nombre</label>
+            <input type="text" name="nombre" class="nombre" id="nombre" placeholder="Ingrese su nombre" formControlName="nombre">
+            @if(registro.get("nombre")?.errors?.["required"] && registro.get("nombre")?.dirty){
+                <small>El nombre es requerido</small>
+            }
+           
+        </div>
+        
+        <div class="seccion">
+            <label for= "apellido">Ingrese su apellido</label>
+            <input type="text" name="apellido" class="apellido" id="apellido" placeholder="Ingrese su apellido" formControlName="apellido">
+            @if(registro.get("apellido")?.errors?.["required"] && registro.get("apellido")?.dirty){
+                <small>El apellido es requerido</small>
+            }
+        </div>
+       
+        
+        <div class="seccion">
+            <label for="email">Ingrese su email</label>
+            <input type="email" name="email" class="email" id="email" placeholder="Ingrese su email" formControlName="email">
+            @if(registro.get("email")?.errors?.["required"] && registro.get("email")?.dirty){
+                <small>El email es requerido</small>
+            }@else if(registro.get("email")?.errors?.["email"]){
+                <small>Tiene que ser un email válido</small>
+            }
+            @if(mostrarMensaje){
+                <small>El email ingresado ya existe</small>
+            }
+        </div>
+        <div class="seccion">
+            <label for="contrasenia">Ingrese su contraseña</label>
+            <section class="contrasenia">
+                <input [type]="hidePassword ? 'password' : 'text'" formControlName="contrasenia" placeholder="Ingresa tu contraseña">
+                <button class="botonOjo" (click)="hidePassword = !hidePassword">
+                  <img  [src]="hidePassword ? '../../assets/iconos/eye.svg' : '../../assets/iconos/eye-off.svg'"
+                    alt="Mostrar/Ocultar Contraseña">
+                </button>
+            </section>  
+            @if(registro.get("contrasenia")?.errors?.["required"] && registro.get("contrasenia")?.dirty){
+                <small>La contraseña es requerida</small>
+            }@else if(registro.get("contrasenia")?.errors?.["minLength"]){
+                <small>La contraseña tiene que tener como mínimo 8 carcateres</small>
+            }
+        </div>
+       
+
+        <input type="submit" value="Registrarse" class="submit" (click)="registrarse()">
+    </form>
+</section>

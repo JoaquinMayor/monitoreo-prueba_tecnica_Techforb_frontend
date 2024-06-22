@@ -8,17 +8,23 @@ import { LecturasComponent } from './lecturas/lecturas.component';
 import { CrearPlantaComponent } from './crear-planta/crear-planta.component';
 import { EditarPlantaComponent } from './editar-planta/editar-planta.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginGuard } from './guards/LoginGuard';
+import { RegistroComponent } from './registro/registro.component';
+import { loginGuardGuard } from './guards/login-guard.guard';
 
 export const routes: Routes = [
     {
         path:"",
-        component: DashboardComponent
+        component: LoginComponent
     },{
-        path:"main",
+        path:"dashboard",
+        component:DashboardComponent,canActivate:[loginGuardGuard]
+    },
+    {
+        path:"registrarse",
+        component:RegistroComponent
+    },
+    {
+        path:"**",
         component:LoginComponent
-    },{
-        path:"crear",
-        component:CrearPlantaComponent
     }
 ];
