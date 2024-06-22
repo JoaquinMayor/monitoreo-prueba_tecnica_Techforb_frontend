@@ -25,7 +25,7 @@
                             <td><p class="ok texto">{{lecturasOk[index]}}</p></td>
                             <td><p class="medio texto">{{lecturasMedias[index]}}</p></td>
                             <td><p class="rojo texto">{{lecturasRojas[index]}}</p></td><div class="posicion">
-                            <td class="puntitos"><img src="../../assets/iconos/puntos.png" (click)="mostrarOpcion(planta.getId)" alt="opciones" class="puntos"></td>
+                            <td class="puntitos" (click)="mostrarOpcion(planta.getId)"><img src="../../assets/iconos/puntos.png"  alt="opciones" class="puntos"></td>
                             @if(opcionesVisible[index]){
                                 <div class="menu">
                                     <ul>

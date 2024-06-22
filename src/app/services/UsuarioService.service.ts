@@ -85,6 +85,7 @@ export class UsuarioService{
 
     logout(){
         this.usuario = new Usuario("","", "", "", false);
+        this.token = "";
         localStorage.setItem("token","0");
         localStorage.setItem("log", "false");
     }

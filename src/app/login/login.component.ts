@@ -38,6 +38,10 @@ export class LoginComponent {
    
   }
 
+  irRegistro(){
+    this.router.navigate(["registrarse"]);
+  }
+
 
 
 }

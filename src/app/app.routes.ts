@@ -22,9 +22,5 @@ export const routes: Routes = [
     {
         path:"registrarse",
         component:RegistroComponent
-    },
-    {
-        path:"**",
-        component:LoginComponent
     }
 ];
