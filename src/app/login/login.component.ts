@@ -23,18 +23,19 @@ export class LoginComponent {
   constructor(private usuarioService:UsuarioService, private router:Router){}
 
   async login(){
-    
+    localStorage.setItem("email",this.logueo.get("email")?.value || "")
     await this.usuarioService.login(this.logueo.get("email")?.value || "", this.logueo.get("password")?.value ||"")
-    .subscribe({next:(response) => {
-      this.usuarioService.guardarToken(response.token);
-      this.usuarioService.guardarUsuario(response.email);
+    .subscribe({next:async (response) => {
+      await this.usuarioService.guardarToken(response.token);
+      await this.usuarioService.guardarUsuario(response.email);
+      this.router.navigate([""]);
     },
     error:(err)=>{
         this.mensaje = "Email o contraseña incorrectos";
     }
   
     })
-    this.router.navigate([""]);
+   
   }
 
 

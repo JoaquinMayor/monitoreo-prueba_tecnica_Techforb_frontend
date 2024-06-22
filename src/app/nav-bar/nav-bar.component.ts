@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../services/UsuarioService.service';
+import { Usuario } from '../models/perfil/Usuario';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,7 +15,20 @@ export class NavBarComponent implements OnInit{
 
   constructor(private usuarioService:UsuarioService){}
   ngOnInit(): void {
-    this.nombreApellido = this.usuarioService.usuario.getNombre + " " + this.usuarioService.usuario.getApellido;
+    let usuario:Usuario;
+    this.usuarioService.buscarUsuario(localStorage.getItem("email")||"").subscribe({
+      next:(response)=>{
+        console.log(response);
+        usuario = new Usuario(response.usuario.nombre, response.usuario.apellido, 
+                              response.usuario.email, response.usuario.contrasenia, 
+                              response.usuario.enabled);
+        this.nombreApellido = usuario.getNombre + " " +usuario.getApellido;
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    });
+    
   }
   
 }

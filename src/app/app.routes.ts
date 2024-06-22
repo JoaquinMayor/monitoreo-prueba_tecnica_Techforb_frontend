@@ -8,13 +8,17 @@ import { LecturasComponent } from './lecturas/lecturas.component';
 import { CrearPlantaComponent } from './crear-planta/crear-planta.component';
 import { EditarPlantaComponent } from './editar-planta/editar-planta.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginGuard } from './guards/LoginGuard';
 
 export const routes: Routes = [
     {
         path:"",
-        component: DashboardComponent,  
+        component: DashboardComponent
     },{
         path:"main",
         component:LoginComponent
+    },{
+        path:"crear",
+        component:CrearPlantaComponent
     }
 ];

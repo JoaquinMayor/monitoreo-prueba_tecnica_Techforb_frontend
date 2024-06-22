@@ -15,6 +15,7 @@ export class Planta{
         this.bandera = bandera;
         this.lecturas = [];
     }
+ 
 
     get getId(){
         return this.id;

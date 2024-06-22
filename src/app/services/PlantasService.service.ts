@@ -7,6 +7,7 @@ import { Lectura } from "../models/informacion/Lectura";
 import { TipoLectura } from "../models/informacion/TipoLectura";
 import { Alerta } from "../models/informacion/Alerta";
 import { API_URL } from "./constantes";
+import { map } from "rxjs";
 
 
 
@@ -20,28 +21,9 @@ export class PlantaService{
    plantas:Planta[] = [];
     
     constructor(private usuarioService:UsuarioService, private http:HttpClient){}
-   
-   
 
     obtenerPlantas(){
-        this.http.get<any>(`${API_URL}/api/planta`, this.usuarioService.httpOptions).subscribe(
-            {next:(responses)=>{
-               this.datos = responses.plantas;
-               this.datos.forEach(dato=>{
-                let planta:Planta = new Planta(dato.id, dato.nombre, dato.pais, dato.bandera);
-                this.lecturas = dato.lecturas;
-                this.lecturas.forEach(lectura=>{
-                    let tipoLectura:TipoLectura = new TipoLectura(lectura.tipo.id, lectura.tipo);
-                    let alerta:Alerta = new Alerta(lectura.alerta.id, lectura.alerta.alerta);
-                    let lectu = new Lectura(lectura.id,tipoLectura,alerta);
-                    planta.setLectura(lectu);
-                })
-                    
-                })
-               },error(err){
-                console.log(err);
-        }})
-        return this.plantas;
+         return this.http.get<any>(`${API_URL}/api/planta`, this.usuarioService.httpOptions);
     }
 
     crearPlanta(planta:Planta){
@@ -57,11 +39,11 @@ export class PlantaService{
             cantLectMedio: cantLecturaMedia,
             cantLectRojo: cantLecturaRojo
         };
-        this.http.post(`${API_URL}/api/planta/update/lecturas`, valores,this.usuarioService.httpOptions);
+        this.http.put(`${API_URL}/api/planta/update/lecturas`, valores,this.usuarioService.httpOptions).subscribe();
     }
 
     actualizarPlanta(planta:Planta){
-        this.http.put(`${API_URL}/api/planta/update`, planta, this.usuarioService.httpOptions);
+        this.http.put(`${API_URL}/api/planta/update`, planta, this.usuarioService.httpOptions).subscribe();
     }
 
     cantidadOk(id:number){
@@ -75,6 +57,15 @@ export class PlantaService{
     cantidadRoja(id:number){
         return this.http.get<any>(`${API_URL}/api/planta/contarRoja/${id}`, this.usuarioService.httpOptions);
     }
+
+    buscarPorId(id:number){
+        return this.http.get<any>(`${API_URL}/api/planta/encontrar/${id}`, this.usuarioService.httpOptions);
+    }
+    
+    eliminarPlanta(id:number){
+        return this.http.delete(`${API_URL}/api/planta/eliminar/${id}`, this.usuarioService.httpOptions).subscribe();
+    }
+    
 }
 
 

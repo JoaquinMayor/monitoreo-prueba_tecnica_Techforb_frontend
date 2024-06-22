@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PlantaService } from '../services/PlantasService.service';
 import { PaisService } from '../services/PaisesService.service';
 import { Pais } from '../models/informacion/Pais';
+import { Planta } from '../models/informacion/Planta';
+import { DatosCompartidosService } from '../services/DatosCompartidosService.service';
 
 @Component({
   selector: 'app-editar-planta',
@@ -14,7 +16,9 @@ import { Pais } from '../models/informacion/Pais';
 export class EditarPlantaComponent implements OnInit{
 
   paises:Pais[] = [];
-  constructor(private plantaService:PlantaService, private paisService:PaisService){}
+  @Input() idPlanta:number = -1;
+  @Output() mostrar = new EventEmitter<boolean>();
+  constructor(private plantaService:PlantaService, private paisService:PaisService, private datosService:DatosCompartidosService){}
 
   ngOnInit(): void {
     this.paisService.listarPaises();
@@ -33,14 +37,49 @@ export class EditarPlantaComponent implements OnInit{
   edicion = new FormGroup({
     nombre: new FormControl("",[Validators.required]),
     pais:new FormControl("",[Validators.required]),
-    cantidadLecturas: new FormControl("", [Validators.required]),
-    cantidadOk: new FormControl("", [Validators.required]),
-    cantidadMedia: new FormControl("", [Validators.required]),
-    cantidadRoja: new FormControl("", [Validators.required])
+    cantidadLecturas: new FormControl(0, [Validators.required]),
+    cantidadOk: new FormControl(0, [Validators.required]),
+    cantidadMedia: new FormControl(0, [Validators.required]),
+    cantidadRoja: new FormControl(0, [Validators.required])
   })
 
   modificar(){
-    console.log(this.edicion.get("pais")?.value || "")
-    let pais = this.paises.find(pais=> pais.getNombre == this.edicion.get("pais")?.value || "");
+    let planta:Planta;
+    this.plantaService.buscarPorId(this.idPlanta).subscribe({
+      next:(response)=>{
+        console.log(response);
+        let pais = this.paises.find(pais=> pais.getNombre == this.edicion.get("pais")?.value || "");
+        planta = new Planta(response.plantas.id, response.plantas.nombre, response.plantas.pais, response.plantas.bandera);
+        planta.setNombre(this.edicion.get("nombre")?.value||"");
+        planta.setPais(this.edicion.get("pais")?.value||"");
+        planta.setPais( pais?.getNombre||"");
+        console.log()
+        planta.setBandera(pais?.getBandera||"");
+        this.plantaService.actualizarPlanta(planta);
+        console.log(this.edicion.get("cantidadLecturas")?.value||0);
+        console.log(this.edicion.get("cantidadOk")?.value||0);
+        console.log(this.edicion.get("cantidadMedia")?.value||0);
+        console.log(this.edicion.get("cantidadRoja")?.value||0);
+
+        this.plantaService.actualizarLecturas(this.idPlanta,this.edicion.get("cantidadLecturas")?.value||0,
+        this.edicion.get("cantidadOk")?.value||0,
+        this.edicion.get("cantidadMedia")?.value||0,
+        this.edicion.get("cantidadRoja")?.value||0)
+        this.datosService.actualizarDatos();
+        this.mostrar.emit(false);
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    }
+    );
+    
+    
+  }
+
+  cancelarEdicion(event:any){
+    this.mostrar.emit(false);
   }
 }
+
+

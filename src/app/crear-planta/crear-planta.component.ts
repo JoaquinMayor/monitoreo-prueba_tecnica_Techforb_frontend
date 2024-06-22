@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Pais } from '../models/informacion/Pais';
 import { PlantaService } from '../services/PlantasService.service';
 import { PaisService } from '../services/PaisesService.service';
 import { Planta } from '../models/informacion/Planta';
+import { DatosCompartidosService } from '../services/DatosCompartidosService.service';
+
+
 
 @Component({
   selector: 'app-crear-planta',
@@ -15,8 +18,10 @@ import { Planta } from '../models/informacion/Planta';
 export class CrearPlantaComponent implements OnInit{
   
   paises:Pais[] = [];
+  @Output() cancelar = new EventEmitter<boolean>();
 
-  constructor(private plantaService:PlantaService, private paisService:PaisService){}
+
+  constructor(private plantaService:PlantaService, private paisService:PaisService, private datosService:DatosCompartidosService){}
   ngOnInit(): void {
     this.paisService.listarPaises();
     this.paises = this.paisService.paises;
@@ -42,5 +47,12 @@ export class CrearPlantaComponent implements OnInit{
     let pais = this.paises.find(pais=> pais.getNombre == this.creacion.get("pais")?.value || "");
     let plata:Planta = new Planta(0, this.creacion.get("nombre")?.value || "", pais?.getNombre||"", pais?.getBandera||"");
     this.plantaService.crearPlanta(plata);
+    const info = false;
+    this.datosService.actualizarDatos();
+    this.cancelar.emit(info);
+  }
+
+  cancelarCreacion(event:any){
+    this.cancelar.emit(false);
   }
 }

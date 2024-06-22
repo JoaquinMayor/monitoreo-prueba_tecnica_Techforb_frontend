@@ -16,7 +16,7 @@
             <div class="seccion">
                 <label for="lecturas">Cantidad de lecturas</label>
                 <input type="number" class="lecturas" name="lecturas" id="lecturas" placeholder="Ingrese" formControlName="cantidadLecturas">
-                @if(edicion.get("lecturas")?.errors?.["required"]  &&  edicion.get("lecturas")?.dirty){
+                @if(edicion.get("cantidadLecturas")?.errors?.["required"]  &&  edicion.get("cantidadLecturas")?.dirty){
                     <p>La cantidad de lecturas es requerida</p>
                 }
             </div>
@@ -24,7 +24,7 @@
             <div class="seccion">
                 <label for="medias">Alertas medias</label>
                 <input type="number" class="medias" name="medias" id="medias" placeholder="Ingrese" formControlName="cantidadMedia">
-                @if(edicion.get("medias")?.errors?.["required"]  &&  edicion.get("medias")?.dirty){
+                @if(edicion.get("cantidadMedia")?.errors?.["required"]  &&  edicion.get("cantidadMedia")?.dirty){
                     <p>La cantidad de lecturas medias es requerida</p>
                 }
             </div>
@@ -43,8 +43,8 @@
 
             <div class="seccion">
                 <label for="ok">Lecturas ok</label>
-                <input type="number" class="ok" name="" id="ok" placeholder="Ingrese" formControlName="cantidadOk">
-                @if(edicion.get("ok")?.errors?.["required"]  &&  edicion.get("ok")?.dirty){
+                <input type="number" class="ok" name="ok" id="ok" placeholder="Ingrese" formControlName="cantidadOk">
+                @if(edicion.get("cantidadOk")?.errors?.["required"]  &&  edicion.get("cantidadOk")?.dirty){
                     <p>La cantidad de lecturas ok es requerida</p>
                 }
             </div>
@@ -52,15 +52,15 @@
             <div class="seccion">
                 <label for="roja">Alertas rojas</label>
                 <input type="number" class="roja" name="roja" id="roja" placeholder="Ingrese" formControlName="cantidadRoja">
-                @if(edicion.get("roja")?.errors?.["required"]  &&  edicion.get("roja")?.dirty){
+                @if(edicion.get("cantidadRoja")?.errors?.["required"]  &&  edicion.get("cantidadRoja")?.dirty){
                     <p>La cantidad de alertas rojas son requerida</p>
                 }
             </div>
         </div>
         </div>
             <div class="botones">
-                <button class="cancelar">Cancelar</button>
-                <input type="submit" value="Crear" class="crear">
+                <button class="cancelar" (click)="cancelarEdicion($event)">Cancelar</button>
+                <input type="submit" (click)="modificar()" value="Crear" class="crear">
             </div>
         
     </div>

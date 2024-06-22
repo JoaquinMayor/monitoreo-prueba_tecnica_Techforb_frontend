@@ -12,7 +12,7 @@ export class SensorService{
     constructor(private usuarioService:UsuarioService, private http:HttpClient){}
 
     contarSensores(){
-        return this.http.get(`${API_URL}/api/sensor/contar`, this.usuarioService.httpOptions);
+        return this.http.get<any>(`${API_URL}/api/sensor/contar`, this.usuarioService.httpOptions);
     }
     
 }

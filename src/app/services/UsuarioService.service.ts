@@ -12,8 +12,8 @@ import { API_URL } from './constantes';
 export class UsuarioService{
   
     usuario:Usuario = new Usuario("","","","",false);
-    private token = "";
-    
+     token = "";
+     
     private httpClient = inject(HttpClient);
     private headers = new HttpHeaders({"Content-Type": "application/json"});
     httpOptions = {
@@ -27,8 +27,8 @@ export class UsuarioService{
         return this.httpClient.get(`${API_URL}/api/usuario/email/${email}`,this.httpOptions);
     }
 
-    guardarUsuario(email:string){
-        this.buscarUsuario(email).subscribe(
+    async guardarUsuario(email:string){
+        await this.buscarUsuario(email).subscribe(
             {next:(response)=>{
                 this.usuario.setNombre(response.usuario.nombre);
                 this.usuario.setApellido(response.usuario.apellido);
@@ -45,15 +45,18 @@ export class UsuarioService{
         
     }
 
-    login(email:string, contrasenia:string):Observable<any>{
+     login(email:string, contrasenia:string):Observable<any>{
+        localStorage.setItem("token","0");
+        localStorage.setItem("log", "false");
+    
         const loginData = {
             email:email,
             contrasenia:contrasenia
         };
-        return this.httpClient.post(`${API_URL}/login`, loginData,{headers:this.headers});
+         return this.httpClient.post(`${API_URL}/login`, loginData,{headers:this.headers});
     }
 
-    guardarToken(token:string){
+    async guardarToken(token:string){
         this.token = token;
         console.log(this.token);
         this.httpOptions = {
@@ -62,6 +65,15 @@ export class UsuarioService{
               'Authorization': 'Bearer ' + token
             })
           };
+          localStorage.setItem("token", this.token);
+          localStorage.setItem("log", "true");
+         
+    }
+
+    logout(){
+        this.usuario = new Usuario("","", "", "", false);
+        localStorage.setItem("token","0");
+        localStorage.setItem("log", "false");
     }
 }
 
