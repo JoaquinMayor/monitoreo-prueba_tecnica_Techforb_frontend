@@ -69,7 +69,7 @@ export class GlobalComponent implements OnInit{
 
     this.sensorService.contarSensores().subscribe({
       next:(response) =>{
-        this.sensorService = response.cant;
+        this.sensoresDesabilitados = response.cant;
       },
       error:(err)=>{
         console.log(err);
