@@ -1,1 +1,1 @@
-export const API_URL = "https://monitoreo-prueba-tecnica-techforb.onrender.com:8080";
+export const API_URL = "https://monitoreo-prueba-tecnica-techforb.onrender.com";
