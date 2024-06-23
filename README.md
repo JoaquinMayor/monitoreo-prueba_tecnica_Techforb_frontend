@@ -1,27 +1,27 @@
 # MonitoreoPruebaTecnicaTechfordFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
+## Prueba técnica de FrontEnd Angular de sistema de plantas y alertas.
+### Solicitante TechFord.
+
+Este proyecto fue generado con  [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Se corre con  `ng serve` para el server de desarrollo.Navegando a `http://localhost:4200/`. 
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Se corre con `ng test`para ejecutarlo mediante [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Se corre con  `ng e2e`para correr el  end-to-end testsde la plataforma que uno elija. 
 
-## Further help
+# Secciones
+Esta aplicación cuenta con 3 secciones principales, el Login, Registro y el Dashboard.
+Dentro de esta aplicación podremos crearnos un usuario, cuya contraseñia se encoentrará encriptada, para luego iniciar sensión y poder acceder  a la información de las plantas.
+Toda la información se encuentra almacenada en una base de datos personal, generada con un back-end propio ([Link backend](https://github.com/JoaquinMayor/monitoreo-prueba-tecnica-techford)).
+El manejo de los paises y sus banderas se maneja mediante una api externade [Restcountries](https://restcountries.com/v3.1/all)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Carpetas
+Dentro  dle proyecto podremos observar los distintos **componentes utilizados**, como así la carpeta **Model** con las clases creadas y la carpeta **Services**, donde encontraremos el consumo de las apis.
