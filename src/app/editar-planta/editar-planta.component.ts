@@ -6,6 +6,11 @@ import { Pais } from '../models/informacion/Pais';
 import { Planta } from '../models/informacion/Planta';
 import { DatosCompartidosService } from '../services/DatosCompartidosService.service';
 
+/**
+ * Componente destinado a hacer la edición de los datos de una planta específica.
+ * Permite mediantye un formulario solicitar los datos y validarlos.
+ * Utiliza los servicios de PlantaService, PaisService y DatosService
+ */
 @Component({
   selector: 'app-editar-planta',
   standalone: true,
@@ -14,13 +19,20 @@ import { DatosCompartidosService } from '../services/DatosCompartidosService.ser
   styleUrl: './editar-planta.component.scss'
 })
 export class EditarPlantaComponent implements OnInit{
+  //Array destinado a acceder a la información del array que tiene el response;
   datos:any[] = [];
+  //Array destinado a almacenar los datos necesarios de los paises.
   paises:Pais[] = [];
+  //Booleano destinado a si no se cumple la condición de que la cantidad de lecturas que uno ingresa sea igual
+  //a la suma de sus tipos de lecturas muestre un mensaje de error.
   validos:boolean = false;
+  //Input recibido de Plantacomponent para saber cual es la planta que hay que modificar por su id.
   @Input() idPlanta:number = -1;
+  //Output destinado a enviar false para que se cierre la ventana de editar planta una vez realizado alguna acción con éxito
   @Output() mostrar = new EventEmitter<boolean>();
   constructor(private plantaService:PlantaService, private paisService:PaisService, private datosService:DatosCompartidosService){}
-
+  
+  //Método ngOnInit destinado a consumir la api de paises y ordenarlos alfabeticamente
   ngOnInit(): void {
     this.paisService.listarPaises().subscribe({
       next:(response)=>{
@@ -46,7 +58,7 @@ export class EditarPlantaComponent implements OnInit{
 );
     
   }
-
+  //Formulario de edición solicitando nombre, pais y las cantidades de las distintas lecturas.
   edicion = new FormGroup({
     nombre: new FormControl("",[Validators.required]),
     pais:new FormControl("",[Validators.required]),
@@ -55,7 +67,9 @@ export class EditarPlantaComponent implements OnInit{
     cantidadMedia: new FormControl(0, [Validators.required]),
     cantidadRoja: new FormControl(0, [Validators.required])
   })
-
+  //Método destinado a hacer la edición de una planta, 
+  //valida que los datos ingresados la suma de la cantidad de las lecturas ingresadas sea igual
+  //a la suma de sus tipos.
   modificar(){
     const cantLecturas =this.edicion.get("cantidadLecturas")?.value||0;
     const cantOk =this.edicion.get("cantidadOk")?.value||0
@@ -103,7 +117,7 @@ export class EditarPlantaComponent implements OnInit{
     
     
   }
-
+//Método que cierra la pestaña de edición de planta.
   cancelarEdicion(event:any){
     this.mostrar.emit(false);
   }
