@@ -116,23 +116,23 @@ hr{
         padding-bottom: 2vh;
     }
     .puntitos{
-        width: 8vh;
-        display: flex;
-        justify-content: center;
+        position: relative; 
         cursor: pointer;
-    }
-    .posicion{
         display: flex;
+         margin-left: 3vh;
+
     }
+   
     .menu{
-        position: absolute;
         
-       border-radius: 15px;
-        background-color: grey;
+        background-color: #f0f0f0;
         border: 1px solid #ccc;
-        padding: 5px;
+        border-radius: 5px;
         z-index: 1000;
-        margin-left: 5vh;
+        margin-left: 2vh;
+        position: absolute;
+}
+        
         ul{
             list-style-type: none;
             padding: 0;
@@ -142,7 +142,7 @@ hr{
                 cursor: pointer;
             }
             li:hover {
-                background-color: #f0f0f0;
+                background-color: #ccc;
             }
         }
     }
@@ -222,4 +222,4 @@ hr{
 }
 
 
-}
+

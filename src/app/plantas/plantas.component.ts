@@ -36,6 +36,7 @@ export class PlantasComponent implements OnInit{
   }
 
   mostrarOpcion(index:number){
+    console.log(index);
     this.opcionesVisible[index] = !this.opcionesVisible[index];
 
   }
@@ -50,9 +51,13 @@ export class PlantasComponent implements OnInit{
   }
 
   eliminarPlanta(idPlanta:number){
-    this.plantaService.eliminarPlanta(idPlanta);
-    this.datosService.actualizarDatos();
-    this.actualizarInfo();
+    this.plantaService.eliminarPlanta(idPlanta).subscribe({
+      next:()=>{
+        this.datosService.actualizarDatos();
+    
+      }
+    });
+    
   }
 
   actualizarInfo(){

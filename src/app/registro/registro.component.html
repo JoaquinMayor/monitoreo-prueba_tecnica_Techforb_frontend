@@ -43,7 +43,7 @@
             </section>  
             @if(registro.get("contrasenia")?.errors?.["required"] && registro.get("contrasenia")?.dirty){
                 <small>La contraseña es requerida</small>
-            }@else if(registro.get("contrasenia")?.errors?.["minLength"]){
+            }@else if(registro.get("contrasenia")?.errors?.["minlength"]){
                 <small>La contraseña tiene que tener como mínimo 8 carcateres</small>
             }
         </div>

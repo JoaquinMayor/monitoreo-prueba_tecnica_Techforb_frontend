@@ -16,24 +16,35 @@ import { DatosCompartidosService } from '../services/DatosCompartidosService.ser
   styleUrl: './crear-planta.component.scss'
 })
 export class CrearPlantaComponent implements OnInit{
-  
+  datos:any[] = [];
   paises:Pais[] = [];
   @Output() cancelar = new EventEmitter<boolean>();
 
 
   constructor(private plantaService:PlantaService, private paisService:PaisService, private datosService:DatosCompartidosService){}
   ngOnInit(): void {
-    this.paisService.listarPaises();
-    this.paises = this.paisService.paises;
-    this.paises.sort((a, b) => {
-      if (a.getNombre < b.getNombre) {
-          return -1;
+    this.paisService.listarPaises().subscribe({
+      next:(response)=>{
+          this.datos = response;
+          this.datos.forEach(dato=>{
+              this.paises.push(new Pais(dato.name.official, dato.flags.png));
+             
+          this.paises.sort((a, b) => {
+                if (a.getNombre < b.getNombre) {
+              return -1;
+            }
+              if (a.getNombre > b.getNombre) {
+            return 1;
+        }
+              return 0;
+            });
+          })
+          
+      }, error:(err)=>{
+          console.log(err);
       }
-      if (a.getNombre > b.getNombre) {
-          return 1;
-      }
-      return 0;
-  });
+  }
+);
   }
   
   
@@ -46,10 +57,14 @@ export class CrearPlantaComponent implements OnInit{
     console.log(this.creacion.get("pais")?.value || "")
     let pais = this.paises.find(pais=> pais.getNombre == this.creacion.get("pais")?.value || "");
     let plata:Planta = new Planta(0, this.creacion.get("nombre")?.value || "", pais?.getNombre||"", pais?.getBandera||"");
-    this.plantaService.crearPlanta(plata);
-    const info = false;
-    this.datosService.actualizarDatos();
-    this.cancelar.emit(info);
+    this.plantaService.crearPlanta(plata).subscribe({
+      next:()=>{
+        const info = false;
+        this.datosService.actualizarDatos();
+        this.cancelar.emit(info);
+      }
+    });
+    
   }
 
   cancelarCreacion(event:any){

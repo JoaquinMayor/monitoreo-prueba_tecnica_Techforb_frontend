@@ -27,7 +27,7 @@ export class PlantaService{
     }
 
     crearPlanta(planta:Planta){
-        this.http.post(`${API_URL}/api/planta`,planta,this.usuarioService.httpOptions).subscribe();
+        return this.http.post(`${API_URL}/api/planta`,planta,this.usuarioService.httpOptions);
     }
 
     actualizarLecturas(id:number, cantLectura:number, cantLecturaOk:number, cantLecturaMedia:number, cantLecturaRojo:number){
@@ -39,11 +39,11 @@ export class PlantaService{
             cantLectMedio: cantLecturaMedia,
             cantLectRojo: cantLecturaRojo
         };
-        this.http.put(`${API_URL}/api/planta/update/lecturas`, valores,this.usuarioService.httpOptions).subscribe();
+        return this.http.put(`${API_URL}/api/planta/update/lecturas`, valores,this.usuarioService.httpOptions);
     }
 
     actualizarPlanta(planta:Planta){
-        this.http.put(`${API_URL}/api/planta/update`, planta, this.usuarioService.httpOptions).subscribe();
+        return this.http.put(`${API_URL}/api/planta/update`, planta, this.usuarioService.httpOptions);
     }
 
     cantidadOk(id:number){
@@ -63,7 +63,7 @@ export class PlantaService{
     }
     
     eliminarPlanta(id:number){
-        return this.http.delete(`${API_URL}/api/planta/eliminar/${id}`, this.usuarioService.httpOptions).subscribe();
+        return this.http.delete(`${API_URL}/api/planta/eliminar/${id}`, this.usuarioService.httpOptions);
     }
     
 }
