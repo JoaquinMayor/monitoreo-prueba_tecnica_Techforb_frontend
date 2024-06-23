@@ -68,7 +68,7 @@ export class EditarPlantaComponent implements OnInit{
         console.log(response);
         let pais = this.paises.find(pais=> pais.getNombre == this.edicion.get("pais")?.value || "");
         planta = new Planta(response.plantas.id, response.plantas.nombre, response.plantas.pais, response.plantas.bandera);
-        planta.setNombre(this.edicion.get("nombre")?.value||"");
+        planta.setNombre(this.edicion.get("nombre")?.value||planta.getNombre);
         planta.setPais(this.edicion.get("pais")?.value||"");
         planta.setPais( pais?.getNombre||"");
         console.log()
