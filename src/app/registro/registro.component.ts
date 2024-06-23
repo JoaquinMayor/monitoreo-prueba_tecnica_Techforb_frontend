@@ -22,7 +22,7 @@ export class RegistroComponent {
     nombre: new FormControl("",[Validators.required]),
     apellido: new FormControl("",[Validators.required]),
     email:new FormControl("",[Validators.required, Validators.email]),
-    contrasenia:new FormControl("",[Validators.required, Validators.minLength(8)])
+    contrasenia:new FormControl("",[Validators.required, Validators.minLength(9)])
   });
   
   

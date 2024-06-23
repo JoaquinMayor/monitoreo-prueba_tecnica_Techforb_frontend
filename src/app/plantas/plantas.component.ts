@@ -60,7 +60,7 @@ export class PlantasComponent implements OnInit{
     
   }
 
-  actualizarInfo(){
+  async actualizarInfo(){
     this.datos = [];
     this.plantas = [];
     this.lecturasOk= [];
@@ -72,36 +72,43 @@ export class PlantasComponent implements OnInit{
         this.datos = response.plantas;
           this.datos.forEach((planta)=>{
             this.plantas.push(new Planta(planta.id, planta.nombre, planta.pais, planta.bandera));
+            this.plantas.sort((a, b) => a.getPais.localeCompare(b.getPais));
+            
           });
-          this.plantas.sort((a, b) => a.getPais.localeCompare(b.getPais));
-          this.plantas.forEach(planta=>{
+          this.lecturasOk = new Array(this.plantas.length).fill(0);
+        this.lecturasMedias = new Array(this.plantas.length).fill(0);
+        this.lecturasRojas = new Array(this.plantas.length).fill(0);
+        this.opcionesVisible = new Array(this.plantas.length).fill(false);
+         
+        this.plantas.forEach((planta, index)=>{
             let lecturaOk:number;
             let lecturaMedia:number;
             let lecturaRoja:number;
             this.opcionesVisible.push(false);
             this.plantaService.cantidadOk(planta.getId).subscribe({
               next:(response)=>{
-                console.log(response);
                 lecturaOk = response.cant;
-                this.lecturasOk.push(lecturaOk);
+                this.lecturasOk[index] = lecturaOk
                 
               }
             })
-            this.plantaService.cantidadMedia(planta.getId).subscribe({
+             this.plantaService.cantidadMedia(planta.getId).subscribe({
               next:(response)=>{
                 lecturaMedia = response.cant;
-                this.lecturasMedias.push(lecturaMedia);
+                this.lecturasMedias[index] = lecturaMedia;
               }
             })
         
-            this.plantaService.cantidadRoja(planta.getId).subscribe({
+             this.plantaService.cantidadRoja(planta.getId).subscribe({
               next:(response)=>{
                 lecturaRoja = response.cant;
-                this.lecturasRojas.push(lecturaRoja);
+                this.lecturasRojas[index] = lecturaRoja;
               }
             })
            
            })
+          
+          
            
       },
       error:(err)=>{
